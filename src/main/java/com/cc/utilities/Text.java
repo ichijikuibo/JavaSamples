@@ -74,6 +74,19 @@ public class Text {
 
 	}
 	/**
+	 * Centre the a string to the specified length
+	 * @param input the String to be centred
+	 * @param length the number of characters to centre on
+	 * @return a String padded on the left and right to be centred
+	 */
+	public static String centreString(String input,int length)
+	{
+		int rightpadding = (length-input.length())/2;
+		int leftpadding = rightpadding;
+		if(rightpadding+leftpadding+input.length()<length)leftpadding+=1;
+		return " ".repeat(leftpadding) + input + " ".repeat(rightpadding);
+	}
+	/**
 	 * Centre the text of an array of string
 	 * @param input the array of strings to be centred
 	 * @return a array of string centred
