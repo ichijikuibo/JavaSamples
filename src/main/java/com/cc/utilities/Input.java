@@ -66,7 +66,6 @@ public class Input {
 	 * Get a real number from console input between 2 values
 	 * @param min the minimum value
 	 * @param max the maximum value
-	 * @param message the message to be displayed(max and min will be added)
 	 * @return a real number
 	 */
 	public static double getDouble(double min,double max)// get an double between a minimum or maximum
@@ -77,6 +76,51 @@ public class Input {
 		do
 		{
 			enteredText = input.nextLine();
+			try
+			{
+				entereDouble = Double.parseDouble(enteredText);			
+				if(entereDouble>max)
+				{
+					System.out.print("Invalid please enter a number less than or equal to " + max + " > ");
+				}
+				else if(entereDouble<min)
+				{
+					System.out.print("Invalid please enter a number greater than or equal to " + min + " > ");
+				}
+				else 
+				{
+					valid = true;
+				}
+			}
+			catch(NumberFormatException e)
+			{
+				System.out.print("Invalid please enter a number > ");
+
+			}
+		}while(!valid);
+
+		return entereDouble;
+	}
+	/**
+	 * Get a real number from console input between 2 values with a limited number of decimal places
+	 * @param min the minimum value
+	 * @param max the maximum value
+	 * @param maxDecimal Max places after the decimal point
+	 * @return a real number
+	 */
+	public static double getDouble(double min,double max,int maxDecimal)// get an double between a minimum or maximum
+	{
+		double entereDouble = 0;
+		boolean valid = false;
+		String enteredText="";
+		do
+		{
+			enteredText = input.nextLine();
+			if(enteredText.substring(enteredText.indexOf(".")+1).length()>maxDecimal)
+			{
+				System.out.print("Invalid please enter a number with no more than " + maxDecimal + " numbers after the decimal place > ");
+				continue;
+			}
 			try
 			{
 				entereDouble = Double.parseDouble(enteredText);			
