@@ -84,6 +84,8 @@ public class Text {
 		int rightpadding = (length-input.length())/2;
 		int leftpadding = rightpadding;
 		if(rightpadding+leftpadding+input.length()<length)leftpadding+=1;
+		if(leftpadding<0)leftpadding=0;
+		if(rightpadding<0)rightpadding=0;
 		return " ".repeat(leftpadding) + input + " ".repeat(rightpadding);
 	}
 	/**
